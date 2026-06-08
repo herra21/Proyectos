@@ -1,0 +1,13 @@
+# Conexion a la base de datos MariaDB
+spring.datasource.url=URL DE LA BASE DE DATOS
+spring.datasource.username=USER DE LA BASE DE DATOS
+spring.datasource.password=PASSWORD DE LA BASE DE DATOS
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+
+# Hibernate - validate comprueba que el esquema coincide con las entidades
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# Formato de fechas en ISO (ej: 2025-06-01)
+spring.mvc.format.date=iso
+spring.data.rest.base-path=
