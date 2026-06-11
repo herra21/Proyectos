@@ -77,7 +77,7 @@ El token se obtiene haciendo login en `POST /usuarios/login`.
 
 ## Modelo de datos
 
-![Diagrama de base de datos]<img width="911" height="590" alt="image" src="https://github.com/user-attachments/assets/a1ea6355-9079-4e50-9f7e-323a4fcab32b" />
+<img width="911" height="590" alt="image" src="https://github.com/user-attachments/assets/a1ea6355-9079-4e50-9f7e-323a4fcab32b" />
 
 ## Cómo ejecutarlo
 
