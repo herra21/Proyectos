@@ -6,9 +6,11 @@ import com.tfgdam.gestion_paqueteria.domain.entity.Rol;
 import com.tfgdam.gestion_paqueteria.domain.entity.Usuario;
 import com.tfgdam.gestion_paqueteria.repository.RolRepository;
 import com.tfgdam.gestion_paqueteria.repository.UsuarioRepository;
+import com.tfgdam.gestion_paqueteria.security.JwtService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -30,6 +32,11 @@ public class UsuarioService
     private RolRepository rolRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JwtService jwtService;
+
+    //private JwtService jwtService;
+    private AuthenticationManager authenticationManager;
 
     public UsuarioRegisterResponseDTO registrarUsuario(UsuarioRegisterRequestDTO dto)
     {
@@ -77,7 +84,10 @@ public class UsuarioService
 
         // Accedemos al rol dentro de la transacción para evitar LazyInitializationException
         String nombreRol = usuario.getRol() != null ? usuario.getRol().getNombre() : "EMPLEADO";
-        return new UsuarioLoginResponseDTO(usuario.getDni(), nombreRol);
+
+        // Generar el token
+        String token = jwtService.generarToken(usuario);
+        return new UsuarioLoginResponseDTO(usuario.getDni(), nombreRol, token);
     }
 
     public List<UsuarioListaResponseDTO> listarUsuarios()

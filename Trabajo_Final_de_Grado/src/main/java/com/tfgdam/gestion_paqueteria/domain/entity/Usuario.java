@@ -3,6 +3,7 @@ package com.tfgdam.gestion_paqueteria.domain.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Data
 @EqualsAndHashCode(exclude = {"camion", "rol"})
@@ -11,7 +12,8 @@ import lombok.*;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario
+{
 
     @Id
     private String dni;
